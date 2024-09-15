@@ -70,5 +70,9 @@ o include in package.json "start" and "dev"
         -> method GET; Text; do not end URL with "/"; Send
     o POST
         -> method POST; JSON; supply the {field: value,...} 
+    o PUT
+        ->  method PUT; JSON; supply the {field: value,...} 
+    o DELETE
+        -> method DELETE; Text; do not end URL with "/"; Send
 
         
