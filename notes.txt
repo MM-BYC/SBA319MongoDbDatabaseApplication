@@ -1,0 +1,26 @@
+o create a folder SBA319MongoDbDatabaseApplication
+o create the package.json
+    npm init -y
+o install dependencies (--save-dev  or -D both works the same)
+    npm i express nodemon ejs mongoose -D
+    npm i dotenv
+o create the folders
+    mkdir models controllers views config routes
+o include in package.json "start" and "dev"
+        "start": "node index.js",
+        "dev": "nodemon index.js"
+<--- create folders, dependencies in package.json --->
+
+    o create .env (define PORT and MONGO_URI) 
+    o define the database name in MONGO_URI. create a <database>.
+    mongodb+srv://michaelmarquezusa:Admin@cluster0.scklh.mongodb.net/<database>
+<--- define .env --->
+
+    o create config folder 
+        create file connectToDB.js
+<--- define mongoose connection
+
+    o in folder model: create our mongoose schema data models
+        introduce country.js data model
+
+<--- 
