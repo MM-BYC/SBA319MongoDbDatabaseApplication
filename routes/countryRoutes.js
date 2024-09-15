@@ -4,9 +4,6 @@ const router = express.Router();
 const Country = require("../models/country");
 
 //---> CRUD routes for countries
-router.get("/", (req, res) => {
-  res.send("countries root root root");
-});
 
 router.get("/", async (req, res) => {
   //   Get all countries from DB
@@ -36,10 +33,36 @@ router.post("/", async (req, res) => {
       population: population,
     });
     console.log(`SuccesfullyMadePOST`);
+    //--> country: inside res.json means postman will display that as country: or change it to display as countries:
     res.json({ country: country });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
+});
+// --------[POST]
+
+router.put("/:id", async (req, res) => {
+  const countryId = req.params.id;
+  const { countryName, capital, population } = req.body;
+  await Country.findByIdAndUpdate(countryId, {
+    countryName: countryName,
+    capital: capital,
+    population: population,
+  });
+  //  part 2
+  //---> find the updated countryId. Send it to the client side as an object
+  const updateCountry = await Country.findById(countryId);
+  res.json({ country: updateCountry });
+});
+// --------[Update]
+
+router.delete("/:id", async (req, res) => {
+  const countryId = req.params.id;
+  await Country.deleteOne({
+    _id: countryId,
+    // MongoDB implements _id instead of id
+  });
+  res.json({ success: "Its Deleted" });
 });
 
 module.exports = router;

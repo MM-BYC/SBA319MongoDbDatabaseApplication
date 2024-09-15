@@ -64,4 +64,11 @@ o include in package.json "start" and "dev"
             cache 
                 <model>Routes = require('./routes/<model>Routes')
             app.use('/<plural model>, <model>Routes')
+
+<-- Postman usage:
+    o GET 
+        -> method GET; Text; do not end URL with "/"; Send
+    o POST
+        -> method POST; JSON; supply the {field: value,...} 
+
         

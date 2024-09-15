@@ -32,6 +32,16 @@ app.use((req, res, next) => {
 const bikeRoutes = require("./routes/bikeRoutes");
 const countryRoutes = require("./routes/countryRoutes");
 
+//---> General route
+app.get("/", (req, res) => {
+  try {
+    res.send("the root the root the root is on fyyyaaaa!!");
+  } catch (err) {
+    console.log("Error: ", err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
 //---> Use routes
 app.use("/bikes", bikeRoutes);
 app.use("/countries", countryRoutes);

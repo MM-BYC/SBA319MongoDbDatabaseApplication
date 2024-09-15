@@ -1,17 +1,19 @@
 const express = require("express");
 const router = express.Router();
-bike = require("../models/bike");
+const Bike = require("../models/bike");
 
 //---> CRUD routes for bikes
-router.get("/", (req, res) => {
-  res.send("the root the root the root is on fyyyaaaa!!");
-});
 
 router.get("/", async (req, res) => {
-  //   Get all bikes from DB
-  const bikes = await Bike.find();
-  console.log(`Currently Fetching ALL Bikes`);
-  res.json({ bikes: bikes });
+  try {
+    //   Get all bikes from DB
+    const bikes = await Bike.find();
+    console.log(`Currently Fetching ALL Bikes`);
+    res.json({ bikes: bikes });
+  } catch (err) {
+    console.log("Error: ", err);
+    res.status(500).json({ error: err.message });
+  }
 });
 // ----------------> [READ - all instances of Bike in DB]
 router.get("/:id", async (req, res) => {
@@ -24,7 +26,7 @@ router.get("/:id", async (req, res) => {
 // -------------{Read - individual instance of Bike in DB [req.params.id]}
 // ----------------------{GET}
 
-router.post("/bikes", async (req, res) => {
+router.post("/", async (req, res) => {
   const { numOfWheels, color, pedals } = req.body;
   const bike = await Bike.create({
     numOfWheels: numOfWheels,
@@ -36,7 +38,7 @@ router.post("/bikes", async (req, res) => {
 });
 // --------[POST]
 
-router.put("/bikes/:id", async (req, res) => {
+router.put("/:id", async (req, res) => {
   const bikeId = req.params.id;
   const { numOfWheels, color, pedals } = req.body;
   const bike = await Bike.findByIdAndUpdate(bikeId, {
@@ -51,7 +53,7 @@ router.put("/bikes/:id", async (req, res) => {
 });
 // --------[Update]
 
-router.delete("/bikes/:id", async (req, res) => {
+router.delete("/:id", async (req, res) => {
   // id: is a param in the url.
   const bikeId = req.params.id;
   await Bike.deleteOne({
