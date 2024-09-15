@@ -44,7 +44,7 @@ router.post("/", async (req, res) => {
 router.put("/:id", async (req, res) => {
   const countryId = req.params.id;
   const { countryName, capital, population } = req.body;
-  await Country.findByIdAndUpdate(countryId, {
+  const country = await Country.findByIdAndUpdate(countryId, {
     countryName: countryName,
     capital: capital,
     population: population,

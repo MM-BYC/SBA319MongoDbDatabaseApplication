@@ -8,6 +8,6 @@ const userSchema = new mongoose.Schema({
 });
 
 // create the collection. supplied 3rd argument otherwise defaults to "users"
-const User = mongoose.model("Country", userSchema, "usersCollection");
+const User = mongoose.model("User", userSchema, "usersCollection");
 
 module.exports = User;
