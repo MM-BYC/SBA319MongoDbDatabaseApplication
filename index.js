@@ -1,11 +1,13 @@
 require("dotenv").config();
-// ----> Init() our ENV file
+// ---> Init() our ENV file
 const express = require("express");
-// -----> Imported Express
+// ---> Imported Express
 const app = express();
-// ----> Initialize Express
+// ---> Initialize Express
 const PORT = process.env.PORT || 3000;
 const Bike = require("./models/bike");
+
+// ---> Connect to MongoDB
 const connectToDB = require("./config/connectToDB");
 connectToDB();
 
@@ -23,66 +25,18 @@ app.use((req, res, next) => {
 });
 //---> middleware customized implementation uses arrow function
 
-// -----> {Middleware *optional* }
+//---> {Middleware *optional* }
 // in order to determine routes, we FIRST must determine the capability of our data
 
-//---> ---> ---> ---> Routing [Bikes]
-app.get("/", (req, res) => {
-  res.send("the root the root the root is on fyyyaaaa!!");
-});
+//---> import routes
+const bikeRoutes = require("./routes/bikeRoutes");
+const countryRoutes = require("./routes/countryRoutes");
 
-app.get("/bikes", async (req, res) => {
-  //   Get all bikes from DB
-  const bikes = await Bike.find();
-  console.log(`Currently Fetching ALL Bikes`);
-  res.json({ bikes: bikes });
-});
-// ----------------> [READ - all instances of Bike in DB]
-app.get("/bikes/:id", async (req, res) => {
-  // 1.Get id of the url
-  const bikeId = req.params.id;
-  // 2.FindThatBikeByID
-  const thisSpecificBike = await Bike.findById(bikeId);
-  res.json({ bike: thisSpecificBike });
-});
-// -------------{Read - individual instance of Bike in DB [req.params.id]}
-// ----------------------{GET}
+//---> Use routes
+app.use("/bikes", bikeRoutes);
+app.use("/countries", countryRoutes);
 
-app.post("/bikes", async (req, res) => {
-  const { numOfWheels, color, pedals } = req.body;
-  const bike = await Bike.create({
-    numOfWheels: numOfWheels,
-    color: color,
-    pedals: pedals,
-  });
-  console.log("SuccessfullyMadePOST");
-  res.json({ bike: bike });
-});
-// --------[POST]
-
-app.put("/bikes/:id", async (req, res) => {
-  const bikeId = req.params.id;
-  const { numOfWheels, color, pedals } = req.body;
-  const bike = await Bike.findByIdAndUpdate(bikeId, {
-    numOfWheels: numOfWheels,
-    color: color,
-    pedals: pedals,
-  });
-  //   part2
-  const updatedBike = await Bike.findById(bikeId);
-  res.json({ bike: updatedBike });
-});
-// --------[Update]
-
-app.delete("/bikes/:id", async (req, res) => {
-  const bikeId = req.params.id;
-  await Bike.deleteOne({
-    id: bikeId,
-  });
-  res.json({ success: "Its Deleted" });
-});
-// --------[Delete]
-
+//--> server listening to port. Type: npm run dev
 app.listen(PORT, () => {
   console.log(`Connected to Server from PORT ${PORT}`);
 });

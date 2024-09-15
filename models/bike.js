@@ -13,5 +13,4 @@ const bikeSchema = new mongoose.Schema({
 // ---> ok, i created your bike... but now what???
 const Bike = mongoose.model("Bike", bikeSchema);
 
-
 module.exports = Bike;

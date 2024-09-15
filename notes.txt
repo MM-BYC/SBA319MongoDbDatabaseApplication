@@ -18,9 +18,46 @@ o include in package.json "start" and "dev"
 
     o create config folder 
         create file connectToDB.js
-<--- define mongoose connection
+<--- define mongoose connection --->
 
-    o in folder model: create our mongoose schema data models
-        introduce country.js data model
+    o in folder models, create <collection> use Mongoose Schema  
+        * collection is the actual table in mongoDB.
+        * model is javaScript class to represent the collection
+        -> <model>.js  
+            import mongoose package
+                const mongoose = require('mongoose')
+            instantiate the document in the and
+                shape the model for the collection 
+                
+                Schema validation refer to https://mongoosejs.com/docs/validation.html
+                Schema the blueprint
+                
+                const <model>Schema = new mongoose.Schema({
+                    field: <dataType>,
+                    required: true        <- validation 
+                })    
+            create the actual MongoDB collection
+                const <Titlecase model> = mongoose.model("Titlecase model", <model>Schema)    
 
-<--- 
+        -> export <Titlecase model>
+            module.exports = <Titlecase model>
+
+<--- MongoDB requires _id: in method: DELETE --->
+
+<--- tidy up the index.js (aka server)
+    o abstract data collection's by moving the
+      CRUD router from index.js to router folder.    
+      - create a file <model>Route.js in folder routes
+      - <mode>Route.js        
+        -> cache these:
+            const express = require('express')
+            const router  = express.Router()
+            import the data model
+                const plural <model> = require('../path')
+            move all the routers 
+            module.exports = router
+        -> index.js 
+            cache 
+                <model>Routes = require('./routes/<model>Routes')
+            app.use('/<plural model>, <model>Routes')
+        
