@@ -33,7 +33,7 @@ const bikeRoutes = require("./routes/bikeRoutes");
 const countryRoutes = require("./routes/countryRoutes");
 const userRoutes = require("./routes/userRoutes");
 
-//---> General route
+//---> General route available at the root
 app.get("/", (req, res) => {
   try {
     res.send("the root the root the root is on fyyyaaaa!!");
