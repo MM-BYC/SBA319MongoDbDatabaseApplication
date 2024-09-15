@@ -3,9 +3,9 @@ const mongoose = require("mongoose");
 
 const countrySchema = new mongoose.Schema({
   // whats a country?
-  country: String,
+  countryName: String,
   capital: String,
-  population: mongoose.Schema.Types.BigInt,
+  population: Number,
 });
 // --->create a country
 const Country = mongoose.model("Country", countrySchema);

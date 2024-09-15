@@ -55,6 +55,10 @@ o include in package.json "start" and "dev"
             import the data model
                 const plural <model> = require('../path')
             move all the routers 
+            <Titlecase model> in model folder is important when working with MongoDB collection method. 
+            <Titlecase model>.create()
+            <Titlecase model>.findById()
+
             module.exports = router
         -> index.js 
             cache 
