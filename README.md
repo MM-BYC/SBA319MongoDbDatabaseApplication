@@ -12,3 +12,5 @@ echo "# SBA319MongoDbDatabaseApplication" >> README.md
     
     git branch -M main
     git push -u origin main
+    
+Database is intended for an ecommerce Application.
