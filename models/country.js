@@ -1,13 +1,15 @@
-// Schema to define our data => country
+//---> import mongoose
 const mongoose = require("mongoose");
 
+//---> define schema & validations
 const countrySchema = new mongoose.Schema({
-  // whats a country?
   countryName: String,
   capital: String,
   population: Number,
 });
-// --->create a country
+
+//---> create the collection.
 const Country = mongoose.model("Country", countrySchema);
 
+//---> export collection
 module.exports = Country;

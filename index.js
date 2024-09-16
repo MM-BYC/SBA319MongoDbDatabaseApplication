@@ -32,6 +32,7 @@ app.use((req, res, next) => {
 const bikeRoutes = require("./routes/bikeRoutes");
 const countryRoutes = require("./routes/countryRoutes");
 const userRoutes = require("./routes/userRoutes");
+const itemRoutes = require("./routes/itemRoutes");
 
 //---> General route available at the root
 app.get("/", (req, res) => {
@@ -47,6 +48,7 @@ app.get("/", (req, res) => {
 app.use("/bikes", bikeRoutes);
 app.use("/countries", countryRoutes);
 app.use("/users", userRoutes);
+app.use("/items", itemRoutes);
 
 //--> server listening to port. Type: npm run dev
 app.listen(PORT, () => {

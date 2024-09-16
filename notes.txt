@@ -4,6 +4,7 @@ o create the package.json
 o install dependencies (--save-dev  or -D both works the same)
     npm i express nodemon ejs mongoose -D
     npm i dotenv
+    npm i mongoose-currency -D
 o create the folders
     mkdir models controllers views config routes
 o include in package.json "start" and "dev"
