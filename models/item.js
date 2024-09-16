@@ -57,6 +57,12 @@ const itemSchema = new mongoose.Schema({
     default: Date.now,
   },
 });
+
+itemSchema.index({ category: 1 });
+itemSchema.index({ itemName: 1 });
+itemSchema.index({ itemName: 1 });
+itemSchema.index({ category: 1, itemPrice: -1 }); // -1 means descending
+
 //---> create the collection
 const Item = mongoose.model("Item", itemSchema, "itemsCollection");
 //---> export collection
