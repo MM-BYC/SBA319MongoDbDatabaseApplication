@@ -14,3 +14,5 @@ echo "# SBA319MongoDbDatabaseApplication" >> README.md
     git push -u origin main
     
 Database is intended for an ecommerce Application.
+
+to run: at the terminal, use npm run dev
