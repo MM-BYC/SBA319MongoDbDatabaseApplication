@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const Bike = require("../models/bike");
 
 // destructure folder Controllers
 const { bikeControllers } = require("../controllers/bikeControllers");
