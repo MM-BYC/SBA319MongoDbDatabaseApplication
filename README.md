@@ -12,7 +12,14 @@ echo "# SBA319MongoDbDatabaseApplication" >> README.md
     
     git branch -M main
     git push -u origin main
-    
-Database is intended for an ecommerce Application.
 
-to run: at the terminal, use npm run dev
+Abstracted or refactored Routes to Controller - Completed for all data models  
+
+Database is intended for an e-commerce Application.
+
+- To run: at the terminal, use npm run dev
+- Use postman to POST, PUT, GET, DELETE
+- EndPoint is available data models bike, country, item, user
+    o "localhost:PORT/bikes"
+    o "localhost:PORT/bikes:_id"
+- EndPoint served with MongoDB table->collections->documents
