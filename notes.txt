@@ -76,4 +76,10 @@ o include in package.json "start" and "dev"
     o DELETE
         -> method DELETE; Text; do not end URL with "/"; Send
 
+
+<-- Note:
+    JS Common 
+        require(), modules.exports = {}
+    ES6    
+        export function (){}, import 
         
