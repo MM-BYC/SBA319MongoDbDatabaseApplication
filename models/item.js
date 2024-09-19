@@ -1,7 +1,7 @@
 //---> import mongoose
 const mongoose = require("mongoose");
 //---> import currency plugin
-const currency = require("mongoose-currency");
+// const currency = require("mongoose-currency");
 
 //---> define schema & validations
 const itemSchema = new mongoose.Schema({
@@ -66,4 +66,5 @@ itemSchema.index({ category: 1, itemPrice: -1 }); // -1 means descending
 //---> create the collection
 const Item = mongoose.model("Item", itemSchema, "itemsCollection");
 //---> export collection
+
 module.exports = Item;
