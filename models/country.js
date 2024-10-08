@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const countrySchema = new mongoose.Schema({
   countryName: String,
   capital: String,
-  population: Number,
+  population: Number 
 });
 
 //---> create the collection.

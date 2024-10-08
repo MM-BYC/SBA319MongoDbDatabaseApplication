@@ -5,8 +5,7 @@ const express = require("express");
 const app = express();
 // ---> Initialize Express
 const PORT = process.env.PORT || 3000;
-const Bike = require("./models/bike");
-
+ 
 // ---> Connect to MongoDB
 const connectToDB = require("./config/connectToDB");
 connectToDB();

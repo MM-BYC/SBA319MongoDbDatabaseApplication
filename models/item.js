@@ -58,6 +58,7 @@ const itemSchema = new mongoose.Schema({
   },
 });
 
+// create an index on itemName
 itemSchema.index({ category: 1 });
 itemSchema.index({ itemName: 1 });
 itemSchema.index({ itemName: 1 });
